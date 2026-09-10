@@ -1,0 +1,30 @@
+name: Create Screening Artifact
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  create-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Create submission archive
+        run: |
+          zip -r senior-java-fullstack-screening.zip \
+            communication \
+            technical \
+            writing \
+            README.md
+
+      - name: Upload screening artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: senior-java-fullstack-screening
+          path: senior-java-fullstack-screening.zip
+          retention-days: 30
