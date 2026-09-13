@@ -1,56 +1,25 @@
-# Fraud Management System - Backend
+# Fraud Management System - recent project
 
-## Overview
+The Fraud Management System is a Spring Boot-based REST API application designed to manage fraud records and implement a Maker-Checker approval workflow.
 
-The Fraud Management System is a Spring Boot based REST API application designed to manage fraud records and support a Maker-Checker approval workflow.
+The application supports fraud-data ingestion through CSV uploads, along with record-level edit and delete operations from the React.js frontend. Operations initiated by a Maker are submitted for approval and become visible to the appropriate Checker based on the user's hierarchy. The Checker can review the submitted request and perform the required action, such as approve, reject, or delete the request.
 
-The application provides APIs to create, retrieve, update, delete, submit, approve, and reject fraud records.
+## Functional Flow
 
-This project is an independently developed technical demonstration inspired by common fraud and risk-management workflows. It does not contain or reproduce any proprietary source code, data, or implementation from any organization.
+1. **Maker Operations**
+   - A Maker can upload CSV files containing fraud data.
+   - A Maker can edit or delete existing fraud records from the React.js frontend.
+   - These operations do not directly modify the final approved data.
+   - Instead, they generate an approval submission that is routed to the appropriate Checker based on the user's hierarchy.
 
----
+2. **Maker-Checker Approval**
+   - The Checker can view pending submissions from the respective frontend screen.
+   - The Checker can review the submission and asynchronously **approve, reject, or delete** the request.
+   - The approval workflow ensures that changes to fraud data are reviewed before becoming effective.
 
-## Technology Stack
+3. **Approval Submission API**
 
-- Java 17
-- Spring Boot 3.5.x
-- Spring Web
-- Spring Data MongoDB
-- Spring Security
-- Jakarta Bean Validation
-- Lombok
-- Maven
-- JUnit 5
-- Mockito
+   The primary endpoint for initiating the approval workflow is:
 
----
-
-## Key Features
-
-### 1. Fraud Record Management
-
-The application supports complete CRUD operations:
-
-- Create fraud record
-- Get all fraud records
-- Get fraud record by ID
-- Update fraud record
-- Delete fraud record
-
-### 2. Maker-Checker Workflow
-
-The application implements a basic Maker-Checker workflow:
-
-```text
-DRAFT
-  |
-  v
-SUBMIT
-  |
-  v
-PENDING_APPROVAL
-  |
-  +----------------+
-  |                |
-  v                v
-APPROVED        REJECTED
+   ```text
+   POST /submit-approval-submission
