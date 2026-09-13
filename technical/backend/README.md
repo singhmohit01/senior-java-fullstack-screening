@@ -26,13 +26,13 @@ The application supports fraud-data ingestion through CSV uploads, along with re
 
 This endpoint creates and submits an approval request for operations such as CSV uploads, record updates, and deletions. The request is then made available to the appropriate Checker for review.
 
-Record Status API
+4. **Record Status API**
 
-The application provides:
+   The application provides:
 
    ```text
    **GET /record-status**
-   ```
+   ```text
 
 This endpoint retrieves fraud records along with their submission and approval information. The React.js frontend uses this information to display the current status of each request and its associated approval details.
 
@@ -41,10 +41,12 @@ This endpoint retrieves fraud records along with their submission and approval i
    - The file is uploaded to AWS S3 only after the corresponding approval is completed.
    - Once approved, the file can be retrieved from S3 and processed to populate the required downstream fraud-data views.
    - This ensures that unapproved CSV data is not treated as finalized fraud data.
+   
  **Asynchronous Processing**
    - Approval submissions, CSV processing, and related backend operations are handled asynchronously where applicable.
    - This prevents long-running operations from blocking the user-facing API request and improves application responsiveness.
    - The asynchronous approach also allows the system to process larger data volumes more efficiently.
+   
 **Data Persistence**
    - **MongoDB** is used to persist fraud records, approval submissions, workflow status, and related metadata.
    - The data model maintains the relationship between fraud records and their corresponding Maker-Checker submission and approval details.
