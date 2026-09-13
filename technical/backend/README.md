@@ -22,7 +22,7 @@ The application supports fraud-data ingestion through CSV uploads, along with re
    The primary endpoint for initiating the approval workflow is:
 
    ```text
-   **POST /submit-approval-submission**
+   POST /submit-approval-submission
 
 This endpoint creates and submits an approval request for operations such as CSV uploads, record updates, and deletions. The request is then made available to the appropriate Checker for review.
 
@@ -31,7 +31,7 @@ This endpoint creates and submits an approval request for operations such as CSV
    The application provides:
 
    ```text
-   **GET /record-status**
+   GET /record-status
    ```
 
 This endpoint retrieves fraud records along with their submission and approval information. The React.js frontend uses this information to display the current status of each request and its associated approval details.
@@ -51,6 +51,8 @@ This endpoint retrieves fraud records along with their submission and approval i
    - **MongoDB** is used to persist fraud records, approval submissions, workflow status, and related metadata.
    - The data model maintains the relationship between fraud records and their corresponding Maker-Checker submission and approval details.
    - The backend exposes REST APIs consumed by the **React.js frontend** to display fraud records, submission details, and the current approval status.
+
+High-Level Workflow
 
                  React.js Frontend
                         |
