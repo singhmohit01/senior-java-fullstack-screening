@@ -32,7 +32,7 @@ This endpoint creates and submits an approval request for operations such as CSV
 
    ```text
    **GET /record-status**
-   ```text
+   ```
 
 This endpoint retrieves fraud records along with their submission and approval information. The React.js frontend uses this information to display the current status of each request and its associated approval details.
 
