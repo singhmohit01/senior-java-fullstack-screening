@@ -1,6 +1,10 @@
 ### Project Experience – Document Management and Indexing
 
-In one of my previous projects, I worked on a **Document Content Repository Management System**, where document indexing, search, folder hierarchy, and content management were critical parts of the application. The system handled a large volume of documents and metadata, and I worked on a solution for calculating and retrieving folder-size information in near real time.
+In one of my previous projects, I worked on a **Document Content Repository Management System based on Alfresco Content Services**. The platform was responsible for managing and providing access to enterprise documents and associated metadata. The overall architecture consisted of the Content Repository, client applications and user interfaces, Content Services, and a dedicated search and indexing layer.
+
+The following diagram provides a high-level overview of the Content Repository architecture and illustrates how client applications interact with Alfresco Content Services and the underlying search and indexing layer.
+
+[Insert Architecture Diagram – Screenshot 1]
 
 **Key technical challenges and contributions:**
 
