@@ -4,40 +4,25 @@ In one of my previous projects, I worked on a **Document Content Repository Mana
 
 The following diagram provides a high-level overview of the Content Repository architecture and illustrates how client applications interact with Alfresco Content Services and the underlying search and indexing layer.
 
-┌──────────────────────────────┐
-│     Client Applications      │
-│ Digital Workspace / Share    │
-│ REST API                     │
-└──────────────┬───────────────┘
-               │
-               │ 1. Search Request
-               ▼
-┌──────────────────────────────┐
-│  Alfresco Content Services   │
-└──────────────┬───────────────┘
-               │
-               │ 2. Search Query
-               ▼
-┌──────────────────────────────┐
-│ Elasticsearch / OpenSearch   │
-│           Cluster            │
-└──────────────▲───────────────┘
-               │
-               │ 5. Index Documents
-               │
-┌──────────────┴───────────────┐
-│    Batch Indexing Application │
-└──────────────┬───────────────┘
-               │
-        ┌──────┴──────┐
-        │             │
-        │ 3. Read     │ 4. Fetch
-        │    Nodes    │    Extracted Text
-        ▼             ▼
-┌──────────────┐  ┌──────────────────────┐
-│ Repository   │  │ Alfresco Content     │
-│ Database     │  │ Services             │
-└──────────────┘  └──────────────────────┘
+The following diagram provides a high-level overview of the Content Repository architecture and illustrates how client applications interact with Alfresco Content Services and the underlying search and indexing layer.
+
+```mermaid
+flowchart TD
+    A["Client Applications<br/>Digital Workspace / Share / REST API"]
+    B["Alfresco Content Services"]
+    C["Elasticsearch / OpenSearch Cluster"]
+    D["Batch Indexing Application"]
+    E["Repository Database"]
+    F["Alfresco Content Services"]
+
+    A -->|"1. Search Request"| B
+    B -->|"2. Search Query"| C
+    C -->|"Search Results"| B
+    B -->|"Search Response"| A
+
+    D -->|"3. Read Nodes<br/>(Read-Only)"| E
+    D -->|"4. Fetch Extracted Text"| F
+    D -->|"5. Index Documents"| C
 
 **Key technical challenges and contributions:**
 
