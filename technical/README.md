@@ -4,7 +4,40 @@ In one of my previous projects, I worked on a **Document Content Repository Mana
 
 The following diagram provides a high-level overview of the Content Repository architecture and illustrates how client applications interact with Alfresco Content Services and the underlying search and indexing layer.
 
-[Insert Architecture Diagram – Screenshot 1]
+┌──────────────────────────────┐
+│     Client Applications      │
+│ Digital Workspace / Share    │
+│ REST API                     │
+└──────────────┬───────────────┘
+               │
+               │ 1. Search Request
+               ▼
+┌──────────────────────────────┐
+│  Alfresco Content Services   │
+└──────────────┬───────────────┘
+               │
+               │ 2. Search Query
+               ▼
+┌──────────────────────────────┐
+│ Elasticsearch / OpenSearch   │
+│           Cluster            │
+└──────────────▲───────────────┘
+               │
+               │ 5. Index Documents
+               │
+┌──────────────┴───────────────┐
+│    Batch Indexing Application │
+└──────────────┬───────────────┘
+               │
+        ┌──────┴──────┐
+        │             │
+        │ 3. Read     │ 4. Fetch
+        │    Nodes    │    Extracted Text
+        ▼             ▼
+┌──────────────┐  ┌──────────────────────┐
+│ Repository   │  │ Alfresco Content     │
+│ Database     │  │ Services             │
+└──────────────┘  └──────────────────────┘
 
 **Key technical challenges and contributions:**
 
