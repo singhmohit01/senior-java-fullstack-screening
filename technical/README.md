@@ -23,6 +23,7 @@ flowchart TD
     D -->|"3. Read Nodes<br/>(Read-Only)"| E
     D -->|"4. Fetch Extracted Text"| F
     D -->|"5. Index Documents"| C
+```
 
 **Key technical challenges and contributions:**
 
