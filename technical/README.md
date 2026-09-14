@@ -4,8 +4,6 @@ In one of my previous projects, I worked on a **Document Content Repository Mana
 
 The following diagram provides a high-level overview of the Content Repository architecture and illustrates how client applications interact with Alfresco Content Services and the underlying search and indexing layer.
 
-The following diagram provides a high-level overview of the Content Repository architecture and illustrates how client applications interact with Alfresco Content Services and the underlying search and indexing layer.
-
 ```mermaid
 flowchart TD
     A["Client Applications<br/>Digital Workspace / Share / REST API"]
